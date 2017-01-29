@@ -34,7 +34,7 @@ var pack = d3.pack()
     .size([width - 2, height - 2])
     .padding(3);
 
-d3.csv("flare.csv", function(error, data) {
+d3.csv("groups.csv", function(error, data) {
   if (error) throw error;
 
   var root = stratify(data)
@@ -45,7 +45,7 @@ d3.csv("flare.csv", function(error, data) {
 
   var node = svg.select("g")
     .selectAll("g")
-    .data(root.descendants())
+    .data(root.descendants()) 
     .enter().append("g")
       .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
       .attr("class", function(d) { return "node" + (!d.children ? " node--leaf" : d.depth ? "" : " node--root"); })
